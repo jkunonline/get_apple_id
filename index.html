@@ -19,6 +19,8 @@
       --copy-color: #0070c9;
       --copy-success-bg: rgba(76, 175, 80, 0.1);
       --copy-success-color: #4CAF50;
+      --refresh-bg: #0070c9;
+      --refresh-color: #ffffff;
     }
 
     body {
@@ -118,22 +120,40 @@
       display: none;
     }
 
-    h1 {
-      margin-top: 0;
-      font-size: 1.8rem;
-      color: var(--primary-color);
-      font-weight: 600;
-      margin-bottom: 10px;
-      padding-bottom: 10px;
-      border-bottom: 2px solid var(--primary-color);
-      display: inline-block;
-    }
-
     p {
       margin-bottom: 15px;
       font-size: 0.95rem;
       color: #666;
       font-style: italic;
+      display: inline-block;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .refresh-btn {
+      background-color: var(--refresh-bg);
+      color: var(--refresh-color);
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .refresh-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .refresh-btn:active {
+      transform: translateY(1px);
     }
 
     /* 暗黑模式样式 */
@@ -150,6 +170,7 @@
       --copy-color: #0a84ff;
       --copy-success-bg: rgba(48, 209, 88, 0.2);
       --copy-success-color: #30d158;
+      --refresh-bg: #0a84ff;
       background-color: #000000;
     }
 
@@ -175,12 +196,13 @@
         padding: 15px;
       }
 
-      h1 {
-        font-size: 1.5rem;
-      }
-
       th, td {
         padding: 10px;
+      }
+
+      .refresh-btn {
+        padding: 6px 12px;
+        font-size: 0.85rem;
       }
     }
 
@@ -201,36 +223,46 @@
         border-radius: 8px;
       }
 
-      h1 {
-        font-size: 1.3rem;
+      .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Apple ID List</h1>
-    <p>Last Updated: 2025/03/04 19:13:47</p>
+    <div class="header-container">
+      <p>更新时间: 2025/03/04 19:19:26</p>
+      <button class="refresh-btn">刷新数据</button>
+    </div>
     <table>
       <thead>
         <tr>
-          <th>Region / Status</th>
-          <th>Account</th>
-          <th>Password</th>
+          <th>地区/状态</th>
+          <th>账号</th>
+          <th>密码</th>
         </tr>
       </thead>
       <tbody>
         
         <tr>
-          <td>香港</td>
-          <td>qfvblj2968@163.com</td>
-          <td>1qNQ2sDUJ1</td>
+          <td>Normal</td>
+          <td>alyazimmereral2357@gmail.com</td>
+          <td>Dd1ba920e</td>
         </tr>
       
         <tr>
-          <td>美国</td>
-          <td>qian2007495zhan@163.com</td>
-          <td>CkMNTrafY8</td>
+          <td>Normal</td>
+          <td>aidenwaj0q@hotmail.com</td>
+          <td>Dd171260d</td>
+        </tr>
+      
+        <tr>
+          <td>Normal</td>
+          <td>DeborazpiHarr967@icloud.com</td>
+          <td>x5Qt9ch9m9</td>
         </tr>
       
         <tr>
@@ -247,20 +279,32 @@
       
         <tr>
           <td>美国</td>
+          <td>qian2007495zhan@163.com</td>
+          <td>CkMNTrafY8</td>
+        </tr>
+      
+        <tr>
+          <td>美国</td>
           <td>qgb477203@163.com</td>
           <td>cZK7zCHkFF</td>
         </tr>
       
         <tr>
-          <td>美国</td>
-          <td>KevizpiMe644@icloud.com</td>
-          <td>YXEKR6uZjf</td>
+          <td>香港</td>
+          <td>qfvblj2968@163.com</td>
+          <td>1qNQ2sDUJ1</td>
         </tr>
       
         <tr>
-          <td>香港</td>
-          <td>bradtnrosalbav39153@gmail.com</td>
-          <td>dh2SS5YxxS</td>
+          <td>美国</td>
+          <td>KevizpiMe644@icloud.com</td>
+          <td>uuBNns1u9P</td>
+        </tr>
+      
+        <tr>
+          <td>美国</td>
+          <td>rowenawoodard246042b@icloud.com</td>
+          <td>Ye8gcwPYSj</td>
         </tr>
       
         <tr>
@@ -270,15 +314,15 @@
         </tr>
       
         <tr>
-          <td>美国</td>
-          <td>rowenawoodard246042b@icloud.com</td>
-          <td>MrcCBQck2c</td>
+          <td>香港</td>
+          <td>bradtnrosalbav39153@gmail.com</td>
+          <td>dh2SS5YxxS</td>
         </tr>
       
         <tr>
           <td>Normal</td>
-          <td>VedderEarlrbpjhf@gmail.com</td>
-          <td>4PdNahXmqR</td>
+          <td>andersenproschvc2764@gmail.com</td>
+          <td>FAy8cCAE8R</td>
         </tr>
       
         <tr>
@@ -289,14 +333,14 @@
       
         <tr>
           <td>Normal</td>
-          <td>uchtredmagowandf5018@gmail.com</td>
-          <td>1DHCJmMrEZ</td>
+          <td>VedderEarlrbpjhf@gmail.com</td>
+          <td>4PdNahXmqR</td>
         </tr>
       
         <tr>
           <td>Normal</td>
-          <td>andersenproschvc2764@gmail.com</td>
-          <td>FAy8cCAE8R</td>
+          <td>uchtredmagowandf5018@gmail.com</td>
+          <td>1DHCJmMrEZ</td>
         </tr>
       
         <tr>
@@ -355,20 +399,14 @@
       
         <tr>
           <td>美国</td>
-          <td>tieshamorwaywi6420@gmail.com</td>
-          <td>6ZRcWustJ4</td>
+          <td>pamela53chadwickmjj@outlook.com</td>
+          <td>ef6BRTCpTj</td>
         </tr>
       
         <tr>
-          <td>台湾</td>
-          <td>PerezBettyzzd@gmail.com</td>
-          <td>98uXd9NR7w</td>
-        </tr>
-      
-        <tr>
-          <td>韩国</td>
-          <td>timothybyrd139@gmail.com</td>
-          <td>2dgSBkc4a8</td>
+          <td>美国</td>
+          <td>paul29baumannmsv@outlook.com</td>
+          <td>bpss4yrTy2</td>
         </tr>
       
         <tr>
@@ -378,21 +416,27 @@
         </tr>
       
         <tr>
-          <td>美国</td>
-          <td>oelwilliamgonzalez616@gmail.com</td>
-          <td>6jnvgjDFhu</td>
-        </tr>
-      
-        <tr>
           <td>新加坡</td>
           <td>vernromanfinley@gmail.com</td>
           <td>UgWf6MVg4j</td>
         </tr>
       
         <tr>
+          <td>韩国</td>
+          <td>samuelrouse301@gmail.com</td>
+          <td>dP9QaxWFEN</td>
+        </tr>
+      
+        <tr>
+          <td>美国</td>
+          <td>payneharold40@gmail.com</td>
+          <td>8cMQdxeRTe</td>
+        </tr>
+      
+        <tr>
           <td>台湾</td>
-          <td>ancq61nufio@gmail.com</td>
-          <td>Ma3ZMvZu2w</td>
+          <td>PerezBettyzzd@gmail.com</td>
+          <td>98uXd9NR7w</td>
         </tr>
       
         <tr>
@@ -497,21 +541,33 @@
       const tbody = document.querySelector('tbody');
       const allRows = Array.from(tbody.querySelectorAll('tr'));
 
-      if (allRows.length > 10) {
-        allRows.forEach(row => row.style.display = 'none');
+      // 封装随机选择行的函数
+      function randomizeRows() {
+        if (allRows.length > 10) {
+          // 隐藏所有行
+          allRows.forEach(row => row.style.display = 'none');
 
-        const randomIndices = [];
-        while (randomIndices.length < 10 && randomIndices.length < allRows.length) {
-          const randomIndex = Math.floor(Math.random() * allRows.length);
-          if (!randomIndices.includes(randomIndex)) {
-            randomIndices.push(randomIndex);
+          // 随机选择10行显示
+          const randomIndices = [];
+          while (randomIndices.length < 10 && randomIndices.length < allRows.length) {
+            const randomIndex = Math.floor(Math.random() * allRows.length);
+            if (!randomIndices.includes(randomIndex)) {
+              randomIndices.push(randomIndex);
+            }
           }
-        }
 
-        randomIndices.forEach(index => {
-          allRows[index].style.display = '';
-        });
+          // 显示随机选择的行
+          randomIndices.forEach(index => {
+            allRows[index].style.display = '';
+          });
+        }
       }
+
+      // 初始随机显示
+      randomizeRows();
+
+      // 为刷新按钮添加事件监听
+      document.querySelector('.refresh-btn').addEventListener('click', randomizeRows);
 
       document.querySelectorAll('td').forEach(cell => {
         cell.addEventListener('click', function() {

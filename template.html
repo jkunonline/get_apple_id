@@ -19,6 +19,8 @@
       --copy-color: #0070c9;
       --copy-success-bg: rgba(76, 175, 80, 0.1);
       --copy-success-color: #4CAF50;
+      --refresh-bg: #0070c9;
+      --refresh-color: #ffffff;
     }
 
     body {
@@ -118,22 +120,40 @@
       display: none;
     }
 
-    h1 {
-      margin-top: 0;
-      font-size: 1.8rem;
-      color: var(--primary-color);
-      font-weight: 600;
-      margin-bottom: 10px;
-      padding-bottom: 10px;
-      border-bottom: 2px solid var(--primary-color);
-      display: inline-block;
-    }
-
     p {
       margin-bottom: 15px;
       font-size: 0.95rem;
       color: #666;
       font-style: italic;
+      display: inline-block;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .refresh-btn {
+      background-color: var(--refresh-bg);
+      color: var(--refresh-color);
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .refresh-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .refresh-btn:active {
+      transform: translateY(1px);
     }
 
     /* 暗黑模式样式 */
@@ -150,6 +170,7 @@
       --copy-color: #0a84ff;
       --copy-success-bg: rgba(48, 209, 88, 0.2);
       --copy-success-color: #30d158;
+      --refresh-bg: #0a84ff;
       background-color: #000000;
     }
 
@@ -175,12 +196,13 @@
         padding: 15px;
       }
 
-      h1 {
-        font-size: 1.5rem;
-      }
-
       th, td {
         padding: 10px;
+      }
+
+      .refresh-btn {
+        padding: 6px 12px;
+        font-size: 0.85rem;
       }
     }
 
@@ -201,22 +223,26 @@
         border-radius: 8px;
       }
 
-      h1 {
-        font-size: 1.3rem;
+      .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Apple ID List</h1>
-    <p>Last Updated: {{TIMESTAMP}}</p>
+    <div class="header-container">
+      <p>更新时间: {{TIMESTAMP}}</p>
+      <button class="refresh-btn">刷新数据</button>
+    </div>
     <table>
       <thead>
         <tr>
-          <th>Region / Status</th>
-          <th>Account</th>
-          <th>Password</th>
+          <th>地区/状态</th>
+          <th>账号</th>
+          <th>密码</th>
         </tr>
       </thead>
       <tbody>
@@ -293,21 +319,33 @@
       const tbody = document.querySelector('tbody');
       const allRows = Array.from(tbody.querySelectorAll('tr'));
 
-      if (allRows.length > 10) {
-        allRows.forEach(row => row.style.display = 'none');
+      // 封装随机选择行的函数
+      function randomizeRows() {
+        if (allRows.length > 10) {
+          // 隐藏所有行
+          allRows.forEach(row => row.style.display = 'none');
 
-        const randomIndices = [];
-        while (randomIndices.length < 10 && randomIndices.length < allRows.length) {
-          const randomIndex = Math.floor(Math.random() * allRows.length);
-          if (!randomIndices.includes(randomIndex)) {
-            randomIndices.push(randomIndex);
+          // 随机选择10行显示
+          const randomIndices = [];
+          while (randomIndices.length < 10 && randomIndices.length < allRows.length) {
+            const randomIndex = Math.floor(Math.random() * allRows.length);
+            if (!randomIndices.includes(randomIndex)) {
+              randomIndices.push(randomIndex);
+            }
           }
-        }
 
-        randomIndices.forEach(index => {
-          allRows[index].style.display = '';
-        });
+          // 显示随机选择的行
+          randomIndices.forEach(index => {
+            allRows[index].style.display = '';
+          });
+        }
       }
+
+      // 初始随机显示
+      randomizeRows();
+
+      // 为刷新按钮添加事件监听
+      document.querySelector('.refresh-btn').addEventListener('click', randomizeRows);
 
       document.querySelectorAll('td').forEach(cell => {
         cell.addEventListener('click', function() {
