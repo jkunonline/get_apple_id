@@ -2,10 +2,9 @@ name: 每日抓取 Apple ID
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 0 * * *'  # 运行时间仍然是 UTC 时间的 00:00，相当于北京时间 08:00
   workflow_dispatch:
 
-# 添加权限配置
 permissions:
   contents: write
 
@@ -43,13 +42,21 @@ jobs:
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
+        # 添加文件
+        git add index.html index.json
+
         # 检查是否有变更
-        if git diff --quiet index.html index.json; then
-          echo "index.html 和 index.json 没有变更，不需要提交"
-        else
-          # 提交变更
-          git add index.html index.json
-          git commit -m "自动更新: Apple ID账号列表 [$(date '+%Y-%m-%d')]"
-          git push
-          echo "index.html 和 index.json 已更新并提交"
+        if git diff --cached --quiet; then
+          echo "❌ 没有检测到文件变更，不提交"
+          exit 0
         fi
+
+        # 获取上海时间 (UTC+8)
+        SHANGHAI_TIME=$(TZ=Asia/Shanghai date '+%Y-%m-%d %H:%M:%S')
+
+        # 提交更改
+        git commit -m "自动更新: Apple ID账号列表 [${SHANGHAI_TIME}]"
+        
+        # 设置 push 远程仓库
+        git push origin HEAD:main
+        echo "✅ index.html 和 index.json 已更新并提交"
