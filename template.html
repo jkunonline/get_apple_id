@@ -234,7 +234,7 @@
 <body>
   <div class="container">
     <div class="header-container">
-      <p>更新时间: {{TIMESTAMP}}</p>
+      <p>更新时间: <time id="current-time">{{TIMESTAMP}}</time></p>
       <button class="refresh-btn">刷新数据</button>
     </div>
     <table>
@@ -316,6 +316,27 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
+      // 获取时间元素
+      const timeElement = document.getElementById('current-time');
+      const timestamp = timeElement.textContent.trim(); // 获取 UTC 时间字符串
+
+      // 解析为 Date 对象（浏览器会自动识别为 UTC）
+      const time = new Date(timestamp);
+
+      // 获取浏览器的首选语言
+      const userLanguage = navigator.language || (navigator.languages && navigator.languages[0]) || 'zh-CN';
+
+      // 转换为本地时间格式
+      timeElement.textContent = time.toLocaleString(userLanguage, {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false // 24小时制，可改为 true 显示 12 小时制
+      });
+
       const tbody = document.querySelector('tbody');
       const allRows = Array.from(tbody.querySelectorAll('tr'));
 
@@ -345,7 +366,9 @@
       randomizeRows();
 
       // 为刷新按钮添加事件监听
-      document.querySelector('.refresh-btn').addEventListener('click', randomizeRows);
+      document.querySelector('.refresh-btn').addEventListener('click', function() {
+        randomizeRows();
+      });
 
       document.querySelectorAll('td').forEach(cell => {
         cell.addEventListener('click', function() {

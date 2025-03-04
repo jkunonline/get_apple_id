@@ -143,17 +143,8 @@ async function generateHtmlFile(accounts: AppleID[], filePath: string): Promise<
     const templatePath = path.join(__dirname, 'template.html');
     let templateContent = fs.readFileSync(templatePath, 'utf8');
 
-    const timestamp = new Date().toLocaleString('zh-CN', {
-      timeZone: 'Asia/Shanghai', // 显式指定时区
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      hour12: false
-    });
-
+    // 获取当前 UTC 时间
+    const timestamp = new Date().toISOString();
 
     // 替换时间戳
     templateContent = templateContent.replace('{{TIMESTAMP}}', timestamp);
