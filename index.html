@@ -14,24 +14,34 @@
   <link rel="canonical" href="https://id.52pokemon.cc">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="theme-color" content="#007AFF">
+  <meta name="theme-color" content="#FF7043">
   <style>
-    /* 基础样式 - 亮色模式 */
+    /* 基础样式 - 亮色模式（温暖配色） */
     :root {
-      --primary-color: #0070c9;
-      --secondary-color: #f5f5f7;
-      --text-color: #333333;
-      --border-color: #d2d2d7;
-      --hover-color: #f2f2f2;
-      --accent-color: #06c;
-      --shadow-color: rgba(0, 0, 0, 0.1);
-      --card-bg: #ffffff;
-      --copy-bg: rgba(0, 112, 201, 0.1);
-      --copy-color: #0070c9;
+      /* 主要色：暖橘色 */
+      --primary-color: #FF7043;
+      /* 背景色：奶油浅色 */
+      --secondary-color: #FFF3E0;
+      /* 文字色：深咖啡色 */
+      --text-color: #4E342E;
+      /* 边框和hover的浅色：略带暖调 */
+      --border-color: #FFE0B2;
+      --hover-color: #FFF8E1;
+      /* 点缀色：浅橘 */
+      --accent-color: #FFB74D;
+      /* 阴影色：带一点橘红色调 */
+      --shadow-color: rgba(255, 143, 107, 0.2);
+      /* 卡片背景：纯白 */
+      --card-bg: #FFFFFF;
+      /* 复制按钮背景：半透明暖橘 */
+      --copy-bg: rgba(255, 112, 67, 0.15);
+      --copy-color: #FF7043;
+      /* 复制成功背景与文字颜色：沿用绿色提示 */
       --copy-success-bg: rgba(76, 175, 80, 0.1);
       --copy-success-color: #4CAF50;
-      --refresh-bg: #0070c9;
-      --refresh-color: #ffffff;
+      /* 刷新按钮背景与文字颜色 */
+      --refresh-bg: #FF7043;
+      --refresh-color: #FFFFFF;
     }
 
     body {
@@ -43,19 +53,7 @@
       line-height: 1.5;
       transition: all 0.3s ease;
     }
-    .highlight {
-        font-size: 18px;
-    }
-    .highlight::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background-color: rgba(255, 59, 48, 0.3);
-    border-radius: 2px;
-    }
+
     .container {
       max-width: 1000px;
       margin: 0 auto;
@@ -66,6 +64,73 @@
       transition: all 0.3s ease;
     }
 
+    h1 {
+      margin-top: 0;
+      color: var(--primary-color);
+      font-size: 1.6rem;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .highlight {
+      position: relative;
+      color: var(--primary-color);
+    }
+    .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: rgba(255, 112, 67, 0.25); /* 暖橘色半透明 */
+      border-radius: 2px;
+    }
+
+    .promo-container {
+      margin: 15px 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .promo-text {
+      margin: 0;
+      font-size: 1rem;
+      color: #6D4C41;
+      font-weight: 500;
+    }
+
+    .promo-btn {
+      background-color: var(--accent-color);
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .promo-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .promo-btn:active {
+      transform: translateY(1px);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    /* 表格相关 */
     table {
       width: 100%;
       border-collapse: separate;
@@ -74,6 +139,7 @@
       border-radius: 8px;
       overflow: hidden;
       box-shadow: 0 2px 10px var(--shadow-color);
+      background-color: var(--card-bg);
     }
 
     th, td {
@@ -125,10 +191,12 @@
     }
 
     td.copy-success::after {
-      content: "Copyed!";
+      content: "Copied!";
       background-color: var(--copy-success-bg);
       color: var(--copy-success-color);
     }
+
+    /* 指定列宽 */
     td:first-child {
       width: 20%;
     }
@@ -138,32 +206,22 @@
     td:nth-child(3) {
       width: 35%;
     }
+    /* 第一列不显示Copy按钮 */
     td:first-child::after {
       content: ' ';
       display: none;
     }
 
+    /* 段落样式 */
     p {
       margin-bottom: 15px;
       font-size: 0.95rem;
-      color: #666;
+      color: #6D4C41;
       font-style: italic;
       display: inline-block;
     }
 
-    .header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 15px;
-    }
-   .seo-footer {
-      margin-top: 30px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border-color);
-      font-size: 14px;
-      color: #666;
-    }
+    /* 刷新按钮 */
     .refresh-btn {
       background-color: var(--refresh-bg);
       color: var(--refresh-color);
@@ -185,21 +243,63 @@
       transform: translateY(1px);
     }
 
-    /* 暗黑模式样式 */
+    /* SEO 底部信息 */
+    .seo-footer {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
+      font-size: 14px;
+      color: #6D4C41;
+    }
+
+    .seo-footer h2 {
+      margin-top: 0;
+      color: #5D4037;
+    }
+
+    .features-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .feature-item {
+      background-color: #FFECE0;
+      border-radius: 6px;
+      padding: 10px;
+      box-shadow: 0 2px 6px rgba(255, 143, 107, 0.1);
+    }
+
+    .feature-item h3 {
+      margin: 0 0 8px 0;
+      color: var(--text-color);
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .feature-item p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #6D4C41;
+      font-style: normal;
+    }
+
+    /* 暗黑模式样式：保持暖色调 */
     body.dark {
-      --primary-color: #0a84ff;
-      --secondary-color: #1c1c1e;
-      --text-color: #f5f5f7;
-      --border-color: #38383a;
-      --hover-color: #2c2c2e;
-      --accent-color: #5ac8fa;
-      --shadow-color: rgba(0, 0, 0, 0.3);
-      --card-bg: #2c2c2e;
-      --copy-bg: rgba(10, 132, 255, 0.2);
-      --copy-color: #0a84ff;
-      --copy-success-bg: rgba(48, 209, 88, 0.2);
+      --primary-color: #FF7043;
+      --secondary-color: #1E1B18;
+      --text-color: #F2E4DA;
+      --border-color: #3C2F2A;
+      --hover-color: #2C2623;
+      --accent-color: #FFB74D;
+      --shadow-color: rgba(0, 0, 0, 0.4);
+      --card-bg: #2C2623;
+      --copy-bg: rgba(255, 112, 67, 0.2);
+      --copy-color: #FF7043;
+      --copy-success-bg: rgba(76, 175, 80, 0.2);
       --copy-success-color: #30d158;
-      --refresh-bg: #0a84ff;
+      --refresh-bg: #FF7043;
       background-color: #000000;
     }
 
@@ -208,14 +308,19 @@
     }
 
     body.dark tr:nth-child(even) {
-      background-color: #252527;
+      background-color: #2A241F;
     }
 
     body.dark p {
-      color: #a1a1a6;
+      color: #CBBCAF;
     }
 
-    /* 添加响应式设计 */
+    .feature-item.dark {
+      background-color: #2A241F !important;
+      box-shadow: 0 2px 6px rgba(255, 112, 67, 0.1);
+    }
+
+    /* 响应式设计 */
     @media (max-width: 768px) {
       body {
         padding: 10px;
@@ -229,7 +334,13 @@
         padding: 10px;
       }
 
-      .refresh-btn {
+      .promo-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .refresh-btn,
+      .promo-btn {
         padding: 6px 12px;
         font-size: 0.85rem;
       }
@@ -262,7 +373,7 @@
 </head>
 <body>
   <div class="container">
-    <h1><span class="highlight">宝可梦星云云</span>Apple ID 共享服务</h1>
+    <h1><span class="highlight">宝可梦星云</span>Apple ID 共享服务</h1>
     <div class="promo-container">
       <p class="promo-text"><span class="highlight">宝可梦星云</span>每月免费套餐，让你畅玩无阻强烈推荐</p>
       <button class="promo-btn" onclick="window.open('https://love.52pokemon.cc', '_blank')">前往宝可梦星云官网</button>
@@ -280,250 +391,216 @@
         </tr>
       </thead>
       <tbody>
-        
         <tr>
           <td>Normal</td>
           <td>quodonnell@gmail.com</td>
           <td>Dd10096da</td>
         </tr>
-      
         <tr>
           <td>Normal</td>
           <td>david7zksmunoz@hotmail.com</td>
           <td>TzTx3!zd</td>
         </tr>
-      
         <tr>
           <td>Normal</td>
           <td>DeborazpiHarr967@icloud.com</td>
           <td>x5Qt9ch9m9</td>
         </tr>
-      
         <tr>
           <td>Normal</td>
           <td>jarvarisrivetteuf3409@gmail.com</td>
           <td>VG7j2eeg4C</td>
         </tr>
-      
         <tr>
           <td> 美国 </td>
           <td>AllenMilliepyl879@gmail.com</td>
           <td>44s41NP3MD5pf3</td>
         </tr>
-      
         <tr>
           <td> 美国 </td>
           <td>BettyGarcia5be56@gmail.com</td>
           <td>44s4nrRa3yZnJ5</td>
         </tr>
-      
         <tr>
           <td>Normal</td>
           <td>rosskennedyjreg5953@gmail.com</td>
           <td>De1Hm1h7a9</td>
         </tr>
-      
         <tr>
           <td>Normal</td>
           <td>VedderEarlrbpjhf@gmail.com</td>
           <td>4PdNahXmqR</td>
         </tr>
-      
         <tr>
           <td>Normal</td>
           <td>andersenproschvc2764@gmail.com</td>
           <td>FAy8cCAE8R</td>
         </tr>
-      
         <tr>
           <td>Normal</td>
           <td>michelleqmrwi3@gmail.com</td>
           <td>gM7H6p96py</td>
         </tr>
-      
         <tr>
           <td>Normal</td>
           <td>uchtredmagowandf5018@gmail.com</td>
           <td>Y3B9gtum4K</td>
         </tr>
-      
         <tr>
           <td>Normal</td>
           <td>jy359840651@163.com</td>
           <td>Dd1927013</td>
         </tr>
-      
         <tr>
           <td>Normal</td>
           <td>kwopigk3809@163.com</td>
           <td>Dd128c2e6</td>
         </tr>
-      
         <tr>
           <td>Normal</td>
           <td>jyvqvepn475@163.com</td>
           <td>TDvU2c8Yw9Qr</td>
         </tr>
-      
         <tr>
           <td>美国</td>
           <td>KevizpiMe644@icloud.com</td>
           <td>jBh1Vj8EH3</td>
         </tr>
-      
         <tr>
           <td>美国</td>
           <td>rowenawoodard246042b@icloud.com</td>
           <td>BgW5juwnAt</td>
         </tr>
-      
         <tr>
           <td>美国</td>
           <td>MirandzpiHugh848@icloud.com</td>
           <td>spkV7Q52C1</td>
         </tr>
-      
         <tr>
           <td>香港</td>
           <td>bradtnrosalbav39153@gmail.com</td>
           <td>6jRNZT41Bm</td>
         </tr>
-      
         <tr>
           <td>印度</td>
           <td>orprobeso50@outlook.com</td>
           <td>6EJG1crZbk</td>
         </tr>
-      
         <tr>
           <td>美国</td>
           <td>lambertruth282@gmail.com</td>
           <td>2fCnKFRFKR</td>
         </tr>
-      
         <tr>
           <td>台湾</td>
           <td>PerezBettyzzd@gmail.com</td>
           <td>98uXd9NR7w</td>
         </tr>
-      
         <tr>
           <td>美国</td>
           <td>pamela53chadwickmjj@outlook.com</td>
           <td>ef6BRTCpTj</td>
         </tr>
-      
         <tr>
           <td>新加坡</td>
           <td>vgilesgh42@gmail.com</td>
           <td>4HWwRkya6B</td>
         </tr>
-      
         <tr>
           <td>台湾</td>
           <td>ancq61nufio@gmail.com</td>
           <td>Ma3ZMvZu2w</td>
         </tr>
-      
         <tr>
           <td>美国</td>
           <td>tieshamorwaywi6420@gmail.com</td>
           <td>6ZRcWustJ4</td>
         </tr>
-      
         <tr>
           <td>日本</td>
           <td>robertwang380@gmail.com</td>
           <td>fgKXq3uWA6</td>
         </tr>
-      
         <tr>
           <td>Normal</td>
           <td>stevensnjjt1@gmail.com</td>
           <td>FP5a6bmVH4</td>
         </tr>
-      
         <tr>
           <td>Normal</td>
           <td>madelyncravenlgzx5364@gmail.com</td>
           <td>vN151Vd7Dy</td>
         </tr>
-      
         <tr>
           <td>Normal</td>
           <td>owengkmkmoreno@hotmail.com</td>
           <td>9dEHlMC\u0026</td>
         </tr>
-      
         <tr>
           <td>Normal</td>
           <td>miastnley@gmail.com</td>
           <td>Dd13c8e6d</td>
         </tr>
-      
         <tr>
           <td>Normal</td>
           <td>niuguadan31016@hotmail.com</td>
           <td>nMF#Bhs0</td>
         </tr>
-      
         <tr>
           <td>美国</td>
           <td>qian2007495zhan@163.com</td>
           <td>CkMNTrafY8</td>
         </tr>
-      
         <tr>
           <td>香港</td>
           <td>qfvblj2968@163.com</td>
           <td>1qNQ2sDUJ1</td>
         </tr>
-      
         <tr>
           <td>美国</td>
           <td>qgb477203@163.com</td>
           <td>cZK7zCHkFF</td>
         </tr>
-      
         <tr>
           <td>美国</td>
           <td>qfpcwzp942@163.com</td>
           <td>mxhp8mP9BJ</td>
         </tr>
-      
         <tr>
           <td>美国</td>
           <td>REBELPRIDE79@hotmail.com</td>
           <td>6CFTdyJpNA</td>
         </tr>
-      
       </tbody>
     </table>
   </div>
-  
+
   <div class="seo-footer">
-      <h2>宝可梦星云 - 您的免费全球网络加速专家</h2>
-      <p>宝可梦星云是一家专注于为玩家提供免费网络加速服务的提供商，拥有万兆带宽中转节点和高速直连节点应对多种场景，为用户提供稳定、高速、安全的全球网络访问体验。无论您是需要观看海外视频、进行跨境工作，还是享受全球游戏，宝可梦星云都能满足您的需求。</p>
-      
-      <div class="features-list">
-        <div class="feature-item">
-          <h3>免费，高速稳定</h3>
-          <p>采用万兆带宽中转技术，多条国际专线保障，确保您的网络连接稳定流畅，告别卡顿和延迟。</p>
-        </div>
-        <div class="feature-item">
-          <h3>全球节点</h3>
-          <p>覆盖亚洲、欧洲、美洲等多个地区的优质节点，智能路由技术确保最佳连接体验。</p>
-        </div>
-        <div class="feature-item">
-          <h3>简单易用</h3>
-          <p>支持各种主流设备和系统，一键连接，无需复杂设置，新手也能轻松上手。</p>
-        </div>
+    <h2>宝可梦星云 - 您的免费全球网络加速专家</h2>
+    <p>宝可梦星云是一家专注于为玩家提供免费网络加速服务的提供商，拥有万兆带宽中转节点和高速直连节点应对多种场景，为用户提供稳定、高速、安全的全球网络访问体验。无论您是需要观看海外视频、进行跨境工作，还是享受全球游戏，宝可梦星云都能满足您的需求。</p>
+    
+    <div class="features-list">
+      <div class="feature-item">
+        <h3>免费，高速稳定</h3>
+        <p>采用万兆带宽中转技术，多条国际专线保障，确保您的网络连接稳定流畅，告别卡顿和延迟。</p>
       </div>
-      
-      <p>除了网络加速服务，宝可梦星云还提供Apple ID共享服务，让您轻松下载国外区域的应用和游戏，体验更广阔的数字世界。</p>
-      
-      <p>选择宝可梦星云，畅享全球互联网，打开新世界的大门！立即访问<a href="https://love.52pokemon.cc" target="_blank" rel="noopener">宝可梦星官网</a>，开启您的高速网络之旅。</p>
+      <div class="feature-item">
+        <h3>全球节点</h3>
+        <p>覆盖亚洲、欧洲、美洲等多个地区的优质节点，智能路由技术确保最佳连接体验。</p>
+      </div>
+      <div class="feature-item">
+        <h3>简单易用</h3>
+        <p>支持各种主流设备和系统，一键连接，无需复杂设置，新手也能轻松上手。</p>
+      </div>
     </div>
+    
+    <p>除了网络加速服务，宝可梦星云还提供Apple ID共享服务，让您轻松下载国外区域的应用和游戏，体验更广阔的数字世界。</p>
+    
+    <p>选择宝可梦星云，畅享全球互联网，打开新世界的大门！立即访问
+      <a href="https://love.52pokemon.cc" target="_blank" rel="noopener">宝可梦星云官网</a>，开启您的高速网络之旅。
+    </p>
+  </div>
+
   <script>
     function checkParentTheme() {
       try {
@@ -545,13 +622,11 @@
           } else {
             document.body.classList.remove('dark');
           }
-
           return true;
         }
       } catch (error) {
         return false;
       }
-
       return false;
     }
 
@@ -571,13 +646,10 @@
       if (window.parent && window.parent.document) {
         const parentHtml = window.parent.document.documentElement;
         const parentBody = window.parent.document.body;
-
         const observer = new MutationObserver(function() {
           checkParentTheme();
         });
-
         const config = { attributes: true, attributeFilter: ['class', 'data-theme'] };
-
         observer.observe(parentHtml, config);
         observer.observe(parentBody, config);
       }
@@ -607,7 +679,7 @@
           hour: '2-digit',
           minute: '2-digit',
           second: '2-digit',
-          hour12: false // 24小时制，可改为 true 显示 12 小时制
+          hour12: false // 24小时制
       });
 
       const tbody = document.querySelector('tbody');
@@ -646,7 +718,6 @@
       document.querySelectorAll('td').forEach(cell => {
         cell.addEventListener('click', function() {
           const text = this.textContent.trim();
-
           const textarea = document.createElement('textarea');
           textarea.value = text;
           textarea.style.position = 'fixed';
@@ -656,9 +727,7 @@
 
           try {
             document.execCommand('copy');
-
             this.classList.add('copy-success');
-
             setTimeout(() => {
               this.classList.remove('copy-success');
             }, 2000);
